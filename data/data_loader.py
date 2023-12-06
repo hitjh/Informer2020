@@ -218,13 +218,14 @@ class Dataset_Custom(Dataset):
     def __read_data__(self):
         self.scaler = StandardScaler()
         df_raw = pd.read_csv(os.path.join(self.root_path,
-                                          self.data_path))
+                                        self.data_path))
         '''
         df_raw.columns: ['date', ...(other features), target feature]
         '''
-        # cols = list(df_raw.columns); 
+
+    # cols = list(df_raw.columns);
         if self.cols:
-            cols=self.cols.copy()
+            cols = self.cols.copy()
             cols.remove(self.target)
         else:
             cols = list(df_raw.columns); cols.remove(self.target); cols.remove('date')
@@ -238,7 +239,7 @@ class Dataset_Custom(Dataset):
         border1 = border1s[self.set_type]
         border2 = border2s[self.set_type]
         
-        if self.features=='M' or self.features=='MS':
+        if self.features=='M' or self.features =='MS':
             cols_data = df_raw.columns[1:]
             df_data = df_raw[cols_data]
         elif self.features=='S':
